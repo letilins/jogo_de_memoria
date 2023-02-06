@@ -12,9 +12,10 @@ var intervalo = setInterval(function(){
     cartoes.forEach(function(cartao){
       cartao.addEventListener("click", virarCartao);
     });
-    return;
+      return;
   }
-  tempo = tempo +1;
+  
+  tempo = tempo + 1;
   document.getElementById("tempo").innerHTML = tempo;
 }, 1000);
 
