@@ -30,7 +30,6 @@ var intervalo = setInterval(function(){
     };
 
     resultadosExistentes.push(resultado);
-
     localStorage.setItem("resultado", JSON.stringify(resultadosExistentes));
 
     document.getElementById("recordes").style.display = "block";
