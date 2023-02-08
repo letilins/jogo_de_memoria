@@ -1,7 +1,9 @@
 @font-face {
-    font-family: "ADELIA" ;
-    src: url(./src/assets/fonts/ADELIA.ttf);
+    font-family: "Purple Smile";
+    src: url(./src/assets/fonts/Purple Smile.ttf);
 }
+
+
 
 *{
     padding: 0;
@@ -32,17 +34,17 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: "ADELIA";
+    font-family: "Purple Smile";
     font-size: 15px;
 }
 
 h1{
     display: flex;
-    font-size: 40px;
+    font-size: 50px;
     margin: 10px;
     padding: 10px;
     justify-content: center;
-    font-family: "ADELIA";
+    font-family: "Purple Smile";
     color: rgba(8, 67, 244, 0.614);
 }
 
@@ -88,3 +90,33 @@ h1{
 .frente-cartao{
     transform: rotateY(180deg);
 } 
+
+#recordes{
+    margin-top: 30px;
+    color: #191719bb;
+    text-align: center;
+    display: none;
+    font-family: "Purple Smile";
+}
+
+td{
+    border: 1px solid rgba(8, 67, 244, 0.614);
+    text-align: center;
+    width: 200px;
+}
+
+#reiniciar{
+    font-size: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #9c76c5;
+    color: white;
+    margin-top: 10px;
+    height: 35px;
+}
+
+#reiniciar:hover{
+    font-size: 25px;
+    color: white;
+    background-color: rgba(8, 67, 244, 0.614);
+}
