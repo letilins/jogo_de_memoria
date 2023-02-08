@@ -16,10 +16,11 @@ if (itensStorage){
 console.log(resultadosJogadores);
 
 var placar = 0;
-var tempo = 0;
+var tempo = 15;
+
 
 var intervalo = setInterval(function(){
-  if (tempo == 15){
+  if (tempo == 0){
     clearInterval(intervalo);
     alert("Tempo esgotado!");
     var nome = prompt("Digite o seu nome:");
@@ -52,7 +53,7 @@ var intervalo = setInterval(function(){
     });
     return;
   }
-  tempo = tempo + 1;
+  tempo = tempo - 1;
 
   document.getElementById("tempo").innerHTML = tempo;
 }, 1000);
