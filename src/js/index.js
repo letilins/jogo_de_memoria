@@ -16,18 +16,30 @@ if (itensStorage){
 console.log(resultadosJogadores);
 
 var placar = 0;
-var tempo = 15;
+var tempo = 0;
 
 
 var intervalo = setInterval(function(){
-  if (tempo == 0|| placar == 6){
-    clearInterval(intervalo);
-    alert("Tempo esgotado!");
-    var nome = prompt("Digite o seu nome:");
-   
+  if (tempo == 60 || placar == 12){
+      clearInterval(intervalo);
+      if (placar == 12) {
+          alert("Parabéns! Você ganhou!");
+        } else {
+          alert("Tempo esgotado!");
+        }
+    
+        var nome = "";
+        while (nome.length < 5){
+          nome = prompt("Digite o seu nome:");
+          if (nome.length < 5){
+            alert("O nome precisa ter mais de 5 caracteres");
+          }
+        }
+
     var resultado ={
       nomeJogador: nome,
       pontuacao: placar,
+      tempo: tempo,
     };
 
     resultadosExistentes.push(resultado);
@@ -37,23 +49,27 @@ var intervalo = setInterval(function(){
 
     var tabela = document.getElementById("resultados");
 
-    resultadosExistentes.sort().forEach(function (resultado){
-      var tr = document.createElement("tr");
-      var tdNome = document.createElement("td");
-      tdNome.innerHTML = resultado.nomeJogador;
-      var tdPontuacao = document.createElement("td");
-      tdPontuacao.innerHTML = resultado.pontuacao;
-      tr.appendChild(tdNome);
-      tr.appendChild(tdPontuacao);
-      tabela.appendChild(tr);
-    });
+    ordenarDados();
+
+    resultadosExistentes.forEach(function (resultado){
+        var tr = document.createElement("tr");
+        var tdNome = document.createElement("td");
+        tdNome.innerHTML = resultado.nomeJogador;
+        var tdPontuacao = document.createElement("td");
+        tdPontuacao.innerHTML = resultado.pontuacao;
+        
+        tr.appendChild(tdNome);
+        tr.appendChild(tdPontuacao);
+       
+        tabela.appendChild(tr);
+      });
 
     cartoes.forEach(function (cartao){
       cartao.removeEventListener("click", virarCartao);
     });
     return;
   }
-  tempo = tempo - 1;
+  tempo = tempo + 1;
 
   document.getElementById("tempo").innerHTML = tempo;
 }, 1000);
@@ -84,14 +100,45 @@ function virarCartao(){
 
               primeiroCartao.classList.remove("virado");
               segundoCartao.classList.remove("virado");
-            }, 250);
+            }, 350);
           }
       }
 }
 
-cartoes.forEach(function(cartao){
+cartoes.forEach(function (cartao){
+  var numero = Math.floor(Math.random() * 12);
+  cartao.style.order = numero;
+});
+
+cartoes.forEach(function (cartao){
   cartao.addEventListener("click", virarCartao);
 });
+
+function ordenarDados(){
+  var melhorTempo = resultadosExistentes[0].tempo;
+  resultadosExistentes.forEach(function (resultado){
+    if (resultado.tempo < melhorTempo){
+      resultadosExistentes.push(melhorTempo);
+    }
+  });
+}
+
+function reiniciarPlacar(){
+  console.log(resultadosExistentes.length);
+  for (var i = 2; i < resultadosExistentes.length + 2; i++){
+    var resultado = document.querySelector("#resultados > tr:nth-child(2)");
+    if (resultado){
+      document.querySelector("#resultados").removeChild(resultado);
+    }
+  }
+
+  localStorage.clear();
+  alert("Placar reiniciado!");
+}
+
+function reiniciarJogo(){
+  location.reload();
+}
 
 
 
