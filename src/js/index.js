@@ -20,7 +20,7 @@ var tempo = 15;
 
 
 var intervalo = setInterval(function(){
-  if (tempo == 0){
+  if (tempo == 0|| placar == 6){
     clearInterval(intervalo);
     alert("Tempo esgotado!");
     var nome = prompt("Digite o seu nome:");
@@ -92,3 +92,9 @@ function virarCartao(){
 cartoes.forEach(function(cartao){
   cartao.addEventListener("click", virarCartao);
 });
+
+
+
+
+
+
