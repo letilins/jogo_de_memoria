@@ -19,7 +19,7 @@ var placar = 0;
 var tempo = 0;
 
 var intervalo = setInterval(function(){
-  if (tempo == 60 || placar == 12){
+  if (tempo == 80 || placar == 12){
       clearInterval(intervalo);
       if (placar == 12) {
           alert("Parabéns! Você ganhou!");
